@@ -1,6 +1,16 @@
 " vim-polyglot disable
 let g:polyglot_disabled = ['markdown']
 
+" vim-plug
+call plug#begin('~/.vim/plugged')
+
+Plug 'Raimondi/delimitMate'
+Plug 'itchyny/lightline.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
+
+call plug#end()
+
 " global
 syntax on
 set number
@@ -16,18 +26,10 @@ augroup update_markdown_syntax
   autocmd FileType markdown syntax match markdownError '\w\@<=\w\@='
 augroup END
 
-" vim-plug
-call plug#begin('~/.vim/plugged')
-Plug 'Raimondi/delimitMate'
-Plug 'itchyny/lightline.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
-call plug#end()
-
-" coc.nvim extensions
+" coc.nvim
 let g:coc_global_extensions = ["coc-html", "coc-tsserver", "coc-prettier", "coc-pyright", "coc-explorer", "coc-json", "coc-yaml", "coc-docker"]
 
-" GoTo code navigation in coc.nvim
+" GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
